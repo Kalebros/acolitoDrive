@@ -11,10 +11,12 @@ TEMPLATE = lib
 
 DEFINES += JSONACTIVIDAD_LIBRARY
 
-SOURCES += jsonactividad.cpp
+SOURCES += jsonactividad.cpp \
+    jsonerroractividad.cpp
 
 HEADERS += jsonactividad.h\
-        jsonactividad_global.h
+        jsonactividad_global.h \
+    jsonerroractividad.h
 
 DESTDIR = ../libs
 

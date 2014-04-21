@@ -7,6 +7,7 @@
 #include <QTime>
 #include <QJsonArray>
 #include <QJsonObject>
+#include <QVariant>
 
 /*!
  * Actividad generada a partir de una entrada JSON

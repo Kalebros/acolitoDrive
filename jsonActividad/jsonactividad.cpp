@@ -27,10 +27,53 @@ JSONActividad::JSONActividad(QObject *parent)
 
 JSONActividad *JSONActividad::fromJsonObject(QJsonObject obj)
 {
-    return 0;
+    JSONActividad *res=new JSONActividad;
+
+    res->setActividad(obj.value("nombre").toString());
+    res->setAsociacion(obj.value("asociacion").toString());
+    res->setResponsable(obj.value("responsable").toString());
+    res->setCoorganizador(obj.value("coorganizadores").toString());
+    res->setCorreo(obj.value("correo").toString());
+    res->setRequisitos(obj.value("requisitos").toString());
+    res->setMaterialPropio(obj.value("mpropio").toString());
+    res->setMaterialOrganizacion(obj.value("morg").toString());
+    res->setTipoActividad(obj.value("tipoActividad").toString());
+    res->setDia(obj.value("fecha").toVariant().toDate());
+    res->setNecesidadesEspacio(obj.value("espacio").toString());
+    res->setHoraInicio(obj.value("inicio").toVariant().toTime());
+    res->setHoraFin(obj.value("fin").toVariant().toTime());
+    res->setTodasJornadas(obj.value("allJornada").toBool());
+    res->setObservaciones(obj.value("observaciones").toString());
+    res->setMaximoParticipantes(obj.value("maxParticipantes").toInt());
+    res->setMinimoParticipantes(obj.value("minParticipantes").toInt());
+    res->setDescripcion(obj.value("descripcion").toString());
+    res->setLugar(obj.value("lugar").toString());
+
+    return res;
 }
 
 QJsonObject JSONActividad::toJsonObject()
 {
-    return QJsonObject();
+    QJsonObject res;
+    res.insert("nombre",_actividad);
+    res.insert("asociacion",_asociacion);
+    res.insert("responsable",_responsable);
+    res.insert("coorganizadores",_coorganizador);
+    res.insert("correo",_correo);
+    res.insert("requisitos",_requisitos);
+    res.insert("mpropio",_matPropio);
+    res.insert("morg",_matOrganizacion);
+    res.insert("tipoActividad",_tipoAct);
+    res.insert("fecha",_dia.toString("dd/MM/yyyy"));
+    res.insert("espacio",_nEspacio);
+    res.insert("inicio",_horaInicio.toString("hh:mm"));
+    res.insert("fin",_horaFin.toString("hh:mm"));
+    res.insert("allJornada",_todaJornadas);
+    res.insert("observaciones",_observaciones);
+    res.insert("maxParticipantes",_maximoParticipantes);
+    res.insert("minParticipante",_minimoParticipantes);
+    res.insert("descripcion",_descripcion);
+    res.insert("lugar",_lugar);
+
+    return res;
 }
